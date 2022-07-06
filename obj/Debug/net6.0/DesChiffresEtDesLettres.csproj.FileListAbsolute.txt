@@ -1,0 +1,15 @@
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\obj\Debug\net6.0\DesChiffresEtDesLettres.csproj.AssemblyReference.cache
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\obj\Debug\net6.0\DesChiffresEtDesLettres.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\obj\Debug\net6.0\DesChiffresEtDesLettres.AssemblyInfoInputs.cache
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\obj\Debug\net6.0\DesChiffresEtDesLettres.AssemblyInfo.cs
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\obj\Debug\net6.0\DesChiffresEtDesLettres.csproj.CoreCompileInputs.cache
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\bin\Debug\net6.0\DesChiffresEtDesLettres.exe
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\bin\Debug\net6.0\DesChiffresEtDesLettres.deps.json
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\bin\Debug\net6.0\DesChiffresEtDesLettres.runtimeconfig.json
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\bin\Debug\net6.0\DesChiffresEtDesLettres.dll
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\bin\Debug\net6.0\DesChiffresEtDesLettres.pdb
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\obj\Debug\net6.0\DesChiffresEtDesLettres.dll
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\obj\Debug\net6.0\refint\DesChiffresEtDesLettres.dll
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\obj\Debug\net6.0\DesChiffresEtDesLettres.pdb
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\obj\Debug\net6.0\DesChiffresEtDesLettres.genruntimeconfig.cache
+C:\Users\Jonas\Desktop\Code\Fichiers\06_C#\DesChiffresEtDesLettres\obj\Debug\net6.0\ref\DesChiffresEtDesLettres.dll
