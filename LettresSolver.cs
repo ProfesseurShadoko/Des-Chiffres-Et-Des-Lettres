@@ -1,6 +1,5 @@
 
-
-public class LettresSolver { //pour accélerer le tout on peut trier la liste de lettres dans l'ordre alphabétique au départ. A partir de là les mots seront générés dans l'ordre alphabétique et il sera plus facile pour wordset de trouver le bon resultat
+public class LettresSolver {
 
     public static WordSet validWords = new WordSet("WordData.txt");
 
@@ -14,17 +13,19 @@ public class LettresSolver { //pour accélerer le tout on peut trier la liste de
         this.cards = new CardSetString(cards);
         currentWord="";
         bestWord="";
+        validWords.eraseSearchHistory();
     }
 
     public void updateBestResult() {
-        if (currentWord.Length <= bestResult ) {return;}
         if (!LettresSolver.isValid(currentWord)) {return;}
+        if (currentWord.Length <= bestResult ) {return;}
+
         this.bestResult = currentWord.Length;
-        this.bestWord = currentWord; //askip il n'y a pas d'effets de bord
+        this.bestWord = currentWord;
     }
 
     public static bool isValid(string word) {
-        return LettresSolver.validWords.contains(word,true);
+        return LettresSolver.validWords.contains(word);
     }
 
     public bool isSolved() {
@@ -32,22 +33,32 @@ public class LettresSolver { //pour accélerer le tout on peut trier la liste de
     }
 
     public void run() {
-        //System.Console.WriteLine(currentWord);
         this.updateBestResult();
 
-        if (this.isSolved()){return;}
+        if (!prefixEquals(currentWord,validWords.currentWord())) {
+            return;
+            }
 
         if (cards.getCardinal()==0) {return;}
-
         for (int i=0; i<10; i++){
             if (this.cards.isActive(i)) {
                 this.cards.deactivate(i);
                 currentWord+=this.cards.set[i];
+                
                 run();
+
                 currentWord=currentWord.Remove(currentWord.Length-1);
                 this.cards.activate(i);
             }
         }
-        LettresSolver.validWords.eraseSearchHistory(); //ca sera appelé à la toute fin, autant de fois qu'il y a eu d'appels recursifs
     }
+
+    public bool prefixEquals(string prefix, string word) {
+        if (prefix.Length > word.Length) {return false;}
+        return prefix.Equals(word.Substring(0,prefix.Length));
+    }
+
+    
+
+    
 }

@@ -1,4 +1,4 @@
-
+using System;
 
 public class CardSet {
 
@@ -75,29 +75,17 @@ public class CardSet {
     }
 
     public override string ToString() {
-        string output="{ ";
-        int[] mySet = this.toArray();
-
-        foreach (int i in mySet) {
-            output+=$"{i} ";
+        string output = "{ ";
+        for (int i=0; i<this.set.Length; i++) {
+            if (this.isActive(i)) {
+                output += $"{this.set[i]} ";
+            }
+            else {
+                output += $"###{this.set[i]}### ";
+            }
         }
 
         return output+"}";
-    }
-
-    public string show() {
-        string myActive="{ ";
-        string mySet="{ ";
-        int bit;
-
-        for (int i=0; i<set.Length; i++) {
-            mySet+=$"{i} ";
-            if (this.isActive(i)) {bit=1;}else{bit=0;}
-            myActive+=$"{bit} ";
-        }
-        mySet+="}";
-        myActive+="}";
-        return $"Set :    {mySet}\nActive : {myActive}";
     }
 }
 
@@ -177,28 +165,16 @@ public class CardSetString {
     }
 
     public override string ToString() {
-        string output="{ ";
-        string[] mySet = this.toArray();
-
-        foreach (string i in mySet) {
-            output+=$"{i} ";
+        string output = "{ ";
+        for (int i=0; i<this.set.Length; i++) {
+            if (this.isActive(i)) {
+                output += $"{this.set[i]} ";
+            }
+            else {
+                output += $"###{this.set[i]}### ";
+            }
         }
 
         return output+"}";
-    }
-
-    public string show() {
-        string myActive="{ ";
-        string mySet="{ ";
-        int bit;
-
-        for (int i=0; i<set.Length; i++) {
-            mySet+=$"{i} ";
-            if (this.isActive(i)) {bit=1;}else{bit=0;}
-            myActive+=$"{bit} ";
-        }
-        mySet+="}";
-        myActive+="}";
-        return $"Set :    {mySet}\nActive : {myActive}";
     }
 }

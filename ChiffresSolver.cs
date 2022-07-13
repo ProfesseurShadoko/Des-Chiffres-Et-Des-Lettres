@@ -1,4 +1,4 @@
-
+using System;
 
 public class ChiffresSolver {
 
@@ -7,12 +7,13 @@ public class ChiffresSolver {
     private CardSet cards;
     private int target;
     private CardSet current_math = new CardSet(15); //cinq operation de 3 entiers (chiffre1,chiffre2,operation)
-    private int[]? bestMath;
-    private int bestResult=2000;
+    public int[] bestMath;
+    public int bestResult=2000;
     
     public ChiffresSolver(int[] cards,int target) {
         this.cards = new CardSet(cards);
         this.target=target;
+        this.bestMath = new int[0];
     }
 
     public void updateBestResult() {
@@ -23,7 +24,6 @@ public class ChiffresSolver {
                 if (Math.Abs(card-this.target)<Math.Abs(this.bestResult-this.target)) {
                     this.bestResult=card;
                     this.bestMath=this.current_math.toArray();
-                    //System.Console.WriteLine(this.cards.show());
                 }
             }
         }
@@ -51,7 +51,7 @@ public class ChiffresSolver {
 
                 for (int j=0; j<6; j++) {
                     if (this.cards.isActive(j)){
-                        c2=this.cards.set[j];//on ne le desactive pas pusiqu'il sera remplacé par le résultat
+                        c2=this.cards.set[j];
 
                         for (int op=0; op<4; op++) {
                             try{
@@ -115,7 +115,7 @@ public class ChiffresSolver {
         }
         else { //division
             if (c1>c2) {
-                if (c1%c2==0) { //si c2=0 ça va renvoyer une exception simplement
+                if (c1%c2==0) {
                     return c1/c2;
                 }
                 else {
@@ -132,13 +132,8 @@ public class ChiffresSolver {
             }
         }
     }
-    public void showStatus() {
-        System.Console.WriteLine("Cards : "+this.cards.show());
-        System.Console.WriteLine("Math : "+this.current_math.show());
-        System.Console.WriteLine();
-    }
 
-    public static string parse(int[]? math) {
+    public static string parse(int[] math) {
 
         if (math==null) {return "";}
 

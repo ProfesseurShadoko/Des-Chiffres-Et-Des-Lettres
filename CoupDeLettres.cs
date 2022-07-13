@@ -1,4 +1,7 @@
-
+using System;
+using System.IO; //File
+using System.Linq; //sum and String compare
+using System.Threading; //threading
 
 public class CoupDeLettres {
 
@@ -9,13 +12,14 @@ public class CoupDeLettres {
     public static System.Random randomizer = new System.Random();
     private string[] cards;
     private bool solved;
+    private bool running;
     private LettresSolver solver;
 
     public CoupDeLettres(int VoyellesNumber) {
         this.cards=CoupDeLettres.Shuffle(CoupDeLettres.randomCards(VoyellesNumber));
         this.solved=false;
+        this.running=false;
         this.solver = new LettresSolver(this.cards);
-
     }
 
     public static string[] randomCards(int VoyellesNumber) {
@@ -40,7 +44,6 @@ public class CoupDeLettres {
             if (currentTot>=limit) {return CoupDeLettres.consonnes[i];}
         }
         throw new Exception("randomConsonne() doesn't work properly");
-
     }
 
     public static string randomVoyelle() {
@@ -64,37 +67,38 @@ public class CoupDeLettres {
         return output;
     }
 
+    public string[] getCards() {
+        return this.cards;
+    }
+
     public void solve() {
-        if (!this.solved){
-            this.solver.run();
-            this.solved=true;
+        if (!this.solved && !this.running){
+            this.running=true;
+            Thread myStread = new Thread(solveInParallel);
+            myStread.Start();
         }  
     }
 
-    public void display() {
+    private void solveInParallel() {
+        this.solver.run();
+        this.running=false;
+        this.solved=true;
+    }
+
+    public string display() {
         System.Console.WriteLine(this.ToString());
+        return this.ToString();
     }
-    public void displaySolution() {
-        if (!this.solved) {this.solve();}
-        System.Console.WriteLine($"J'ai {this.solver.bestResult} lettres avec : {this.solver.bestWord}");
-    }
-
-
-    /*public static void Main() {
-        /*System.Console.WriteLine(new CoupDeLettres(5));
-        System.Console.WriteLine();
-        System.Console.WriteLine(new CoupDeLettres(3));
-        /*System.Console.WriteLine(LettresSolver.validWords.contains("zorglub",true));
-        System.Console.WriteLine(LettresSolver.validWords.contains("bonjour",true));
-        System.Console.WriteLine(LettresSolver.validWords.contains("bonjour",false));
-        System.Console.WriteLine(LettresSolver.validWords.contains("restent",false));
-        CoupDeLettres c;
+    public string displaySolution() {
+        this.solve();
         
-        for (int i=0; i<5; i++) {
-            c = new CoupDeLettres(5);
-            c.display();
-            c.displaySolution();
-            System.Console.WriteLine();
-        }
-    }*/
+        while (!this.solutionAvailable()) {}
+        
+        string output=$"J'ai {this.solver.bestResult} lettres : {this.solver.bestWord}";
+        System.Console.WriteLine(output);
+        return output;
+    }
+    public bool solutionAvailable() {
+        return this.solved;
+    }
 }
